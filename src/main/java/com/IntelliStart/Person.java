@@ -1,8 +1,12 @@
 package com.IntelliStart;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Person implements Comparator {
+    public static final int MAX_AGE = 100;
+    public static final int MAX_WEIGHT = 150;
+    public static final int MAX_HEIGHT = 200;
     private int height;
     private int weight;
     private int age;
@@ -45,9 +49,16 @@ public class Person implements Comparator {
                 '}';
     }
 
+
     @Override
     public int compare(Object o1, Object o2) {
         return 0;
+    }
+    public boolean equalsWeightButNoHeight(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return getHeight() != person.getHeight() && getWeight() == person.getWeight();
     }
 
 //setters, getters, toString
